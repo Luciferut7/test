@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class circle : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float moveSpeed = 5f;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        MovePlayer();
+    }
+
+    void MovePlayer()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        Vector2 movement = new Vector2(horizontalInput, verticalInput);
+        transform.Translate(movement * moveSpeed * Time.deltaTime);
     }
 }
+
